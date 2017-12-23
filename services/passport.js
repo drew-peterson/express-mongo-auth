@@ -49,8 +49,8 @@ const jwtLogin = new JwtStrategy(jwtOptions, function(payload, done){
 	});
 });
 
-// test passport to use this strategy
-passport.use(jwtLogin);
-passport.use(localLogin);
+// tell passport to use this strategy
+passport.use(jwtLogin); // passport will call this jwt @middleware level
+passport.use(localLogin); // passport will call this local @middleware level
 
 

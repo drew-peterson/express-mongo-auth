@@ -4,7 +4,7 @@ const passport = require('passport');
 
 //interceptor/middle -- between incomming request and route below...
 const requireAuth = passport.authenticate('jwt', {session: false});
-const requireSignin = passport.authenticate('local', {session: false});
+const requireSignin = passport.authenticate('local', {session: false}); // local is a keyword for passport telling it to use the localStrategy saved in passport.js
 
 
 module.exports = function(app){
@@ -14,5 +14,5 @@ module.exports = function(app){
 		res.send({hi: 'there'});
 	})
 	app.post('/signup', Authentication.signup);
-	app.post('/signin', requireSignin, Authentication.signin);
+	app.post('/signin', requireSignin, Authentication.signin); // done cb will be passed to passport and called to continue to route.
 };
